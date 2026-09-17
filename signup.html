@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow | Sign Up</title>
+
+
+<!-- ================= BOOTSTRAP ================= -->
+
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+
+<!-- ================= BOOTSTRAP ICONS ================= -->
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+<!-- ================= GOOGLE FONT ================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet">
+
+
+<!-- ================= STYLE ================= -->
+
+<style>
+
+    /* ================= BODY ================= */
+
+    body {
+
+        margin: 0;
+
+        min-height: 100vh;
+
+        background: rgb(61, 5, 5);
+
+        font-family: Arial, sans-serif;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+    }
+
+
+    /* ================= SIGNUP BOX ================= */
+
+    .signup-container {
+
+        width: 900px;
+        max-width: 100%;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+    }
+
+
+    /* ================= LOGO ================= */
+
+    .logo {
+
+        text-align: center;
+
+        font-family: "UnifrakturMaguntia", cursive;
+
+        font-size: 45px;
+
+        color: #460202;
+
+        margin-bottom: 5px;
+
+    }
+
+
+    /* ================= TITLE ================= */
+
+    .signup-title {
+
+        text-align: center;
+
+        color: #460202;
+
+        margin-bottom: 30px;
+
+    }
+
+
+    /* ================= INPUTS ================= */
+
+    .form-control {
+
+        height: 48px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .form-control:focus {
+
+        border-color: #460202;
+
+        box-shadow: 0 0 0 0.2rem rgba(70, 2, 2, 0.15);
+
+    }
+
+
+    /* ================= SIGNUP BUTTON ================= */
+
+    .signup-btn {
+
+        width: 100%;
+
+        height: 48px;
+
+        background-color: #460202;
+
+        color: white;
+
+        border: none;
+
+        border-radius: 10px;
+
+        font-weight: bold;
+
+        margin-top: 10px;
+
+    }
+
+
+    .signup-btn:hover {
+
+        background-color: #650505;
+
+        color: white;
+
+    }
+
+
+    /* ================= LOGIN LINK ================= */
+
+    .login-link {
+
+        text-align: center;
+
+        margin-top: 20px;
+
+    }
+
+
+    .login-link a {
+
+        color: #460202;
+
+        font-weight: bold;
+
+        text-decoration: none;
+
+    }
+
+
+    /* ================= HOME LINK ================= */
+
+    .back-home {
+
+        text-align: center;
+
+        margin-top: 15px;
+
+    }
+
+
+    .back-home a {
+
+        color: #555;
+
+        text-decoration: none;
+
+    }
+
+
+    /* ================= MESSAGE ================= */
+
+    #signupMessage {
+
+        display: none;
+
+        margin-top: 15px;
+
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 500px) {
+
+        .signup-container {
+
+            padding: 30px 25px;
+
+        }
+
+        .logo {
+
+            font-size: 40px;
+
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- ================= SIGNUP CONTAINER ================= -->
+
+<div class="signup-container">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <i class="bi bi-bag"></i> Shadow
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h3 class="signup-title">
+
+        Create Account
+
+    </h3>
+
+
+    <!-- ================= SIGNUP FORM ================= -->
+
+    <form id="signupForm">
+
+
+        <!-- NAME -->
+
+        <div class="mb-3">
+
+            <label
+                for="signupName"
+                class="form-label">
+
+                Full Name
+
+            </label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="signupName"
+                placeholder="Enter your full name"
+                required>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="mb-3">
+
+            <label
+                for="signupEmail"
+                class="form-label">
+
+                Email
+
+            </label>
+
+            <input
+                type="email"
+                class="form-control"
+                id="signupEmail"
+                placeholder="Enter your email"
+                required>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="mb-3">
+
+            <label
+                for="signupPassword"
+                class="form-label">
+
+                Password
+
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="signupPassword"
+                placeholder="Create a password"
+                minlength="6"
+                required>
+
+            <small class="text-muted">
+
+                Password must contain at least 6 characters.
+
+            </small>
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="mb-3">
+
+            <label
+                for="confirmPassword"
+                class="form-label">
+
+                Confirm Password
+
+            </label>
+
+            <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                minlength="6"
+                required>
+
+        </div>
+
+
+        <!-- SIGNUP BUTTON -->
+
+        <button
+            type="submit"
+            class="signup-btn">
+
+            Create Account
+
+        </button>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="signupMessage"
+            class="alert">
+
+        </div>
+
+
+    </form>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <div class="login-link">
+
+        Already have an account?
+
+        <a href="login.html">
+
+            Login
+
+        </a>
+
+    </div>
+
+
+    <!-- ================= HOME ================= -->
+
+    <div class="back-home">
+
+        <a href="shadow.html">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    document
+        .getElementById("signupForm")
+        .addEventListener("submit", function(event) {
+
+
+            /* Prevent page refresh */
+
+            event.preventDefault();
+
+
+            /* Get form values */
+
+            const name =
+                document
+                .getElementById("signupName")
+                .value
+                .trim();
+
+
+            const email =
+                document
+                .getElementById("signupEmail")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+            const password =
+                document
+                .getElementById("signupPassword")
+                .value;
+
+
+            const confirmPassword =
+                document
+                .getElementById("confirmPassword")
+                .value;
+
+
+            const message =
+                document
+                .getElementById("signupMessage");
+
+
+            /* ================= CHECK PASSWORD ================= */
+
+            if (password !== confirmPassword) {
+
+                message.style.display = "block";
+
+                message.className =
+                    "alert alert-danger";
+
+                message.textContent =
+                    "Passwords do not match.";
+
+                return;
+
+            }
+
+
+            /* ================= CHECK EXISTING ACCOUNT ================= */
+
+            const existingUser =
+                localStorage.getItem("shadowUser");
+
+
+            if (existingUser) {
+
+                const user =
+                    JSON.parse(existingUser);
+
+
+                if (user.email === email) {
+
+                    message.style.display = "block";
+
+                    message.className =
+                        "alert alert-danger";
+
+                    message.textContent =
+                        "An account with this email already exists.";
+
+                    return;
+
+                }
+
+            }
+
+
+            /* ================= CREATE USER ================= */
+
+            const newUser = {
+
+                name: name,
+
+                email: email,
+
+                password: password
+
+            };
+
+
+            /* ================= SAVE USER ================= */
+
+            localStorage.setItem(
+                "shadowUser",
+                JSON.stringify(newUser)
+            );
+
+
+            /* ================= SUCCESS MESSAGE ================= */
+
+            message.style.display = "block";
+
+            message.className =
+                "alert alert-success";
+
+            message.textContent =
+                "Account created successfully!";
+
+
+            /* ================= GO TO LOGIN ================= */
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1200);
+
+
+        });
+
+</script>
+```
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+body
+{
+    font-family: Arial, sans-serif;
+      background-color: rgb(247, 247, 246);
+      color: rgb(255, 255, 255); /* Text color for readability */
+}
+
+/* nav bar started here */
+.navbar-brand
+{ 
+  font-family: "UnifrakturMaguntia", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size:xx-large;
+  padding-left: 10px;
+
+}
+.bi flower3
+{
+  padding-bottom: 5px;
+  padding-left: 2px;
+  position: absolute;
+  padding-right: 2px;
+}
+.navbar
+{
+ background-color: #460202;
+ border: 5px;
+ background-position: 0%;
+ background-size:cover;
+ }
+ .search
+ {
+   color: #f9f9f9;
+ }
+ 
+.search:hover
+ {
+   color: #f9f9f9;
+  transition: 3ms;
+ }
+ /* ended here */
+
+ /*start carosule*/
+ .bg1
+ {
+  background: linear-gradient(rgba(238, 237, 235, 0.541),rgba(48, 36, 5, 0.338)) , url("images/slideshowwomens1.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(60vh);
+ }
+ .bg2
+ {
+  background: linear-gradient(rgba(238, 237, 235, 0.541),rgba(48, 36, 5, 0.338)) ,url("images/slideshowwomens2.png") ;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(60vh);
+ }
+ .bg3
+ {
+  background: linear-gradient(rgba(238, 237, 235, 0.541),rgba(48, 36, 5, 0.338)) ,url("images/slideshowwomens3.png") ;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(60vh);
+ }
+ 
+
+ .info-bar {
+    background-color: #afaeae;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .mycaption
+{
+  font-family: "Shadows Into Light", cursive;
+ color: #f9f9f9;
+ position: absolute;
+ width: 40%;
+ left: 50%;
+ top:50%;
+ font-weight: 100;
+ text-align: center;
+ transform: translate(-50%,-50%);
+}
+@media only screen and(max-width:720px)
+{
+ .mycaption
+ {
+    width: 80%;
+ }
+    
+}
+.mycaption h1
+{
+ text-align: center;
+ padding: 10%;
+ font-family: "Shadows Into Light", cursive;
+ font-weight: 400;
+ font-style: normal;
+}
+/* Each item */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icon */
+.info-item i {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Text */
+.info-item p {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+.info-item span {
+    font-size: 13px;
+    color: #777;
+}
+
+/* Heading */
+.container h1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.3;
+    font-family: "Shadows Into Light", cursive;
+    color: #510404;
+  }
+    .bg4
+ {
+  background: linear-gradient(rgba(228, 227, 224, 0),rgba(255, 255, 255, 0.338)) ,url("images/singlephoto2.jpeg") ;
+    background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+  height: calc(50vh);
+  border-radius: 20px;
+ } 
+  /* Cards Layout */
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  /* Individual Card */
+  .card {
+    width: 260px;
+    height: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Hover Effect */
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .categories {
+    padding: 50px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.categories h1 {
+    margin-bottom: 30px;
+}
+
+/* 3 column grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Card */
+.category-card {
+    background: #550202;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Image */
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Text */
+.category-card h3 {
+    padding: 15px;
+}
+
+/* Hover */
+.category-card:hover {
+    transform: translateY(-5px);
+}

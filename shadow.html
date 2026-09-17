@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shadow</title>
+
+
+    <!-- ================================================= -->
+    <!-- BOOTSTRAP CSS -->
+    <!-- ================================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- ================================================= -->
+    <!-- SHADOW CSS -->
+    <!-- ================================================= -->
+
+    <link rel="stylesheet" href="shadow.css">
+
+
+    <!-- ================================================= -->
+    <!-- GOOGLE FONT -->
+    <!-- ================================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ================================================= -->
+    <!-- BOOTSTRAP ICONS -->
+    <!-- ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+    <!-- ================================================= -->
+    <!-- EXTRA FIXES -->
+    <!-- ================================================= -->
+
+    <style>
+
+
+        /* ================================================= */
+        /* GENERAL */
+        /* ================================================= */
+
+        html,
+        body {
+
+            width: 100%;
+
+            max-width: 100%;
+
+            margin: 0;
+
+            padding: 0;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* ================================================= */
+        /* NAVBAR */
+        /* ================================================= */
+
+        .navbar {
+
+            width: 100%;
+
+        }
+
+
+        .navbar-toggler {
+
+            border: 1px solid rgba(255,255,255,0.5);
+
+            padding: 6px 9px;
+
+        }
+
+
+        .navbar-toggler:focus {
+
+            box-shadow: none;
+
+        }
+
+
+        /* ================================================= */
+        /* MOBILE NAVBAR */
+        /* ================================================= */
+
+        @media (max-width: 991.98px) {
+
+
+            .navbar-collapse {
+
+                width: 100%;
+
+                padding-top: 10px;
+
+                padding-bottom: 10px;
+
+            }
+
+
+            .navbar-nav {
+
+                width: 100%;
+
+            }
+
+
+            .navbar-nav .nav-item {
+
+                width: 100%;
+
+            }
+
+
+            .navbar-nav .nav-link {
+
+                padding: 10px 5px;
+
+            }
+
+
+            #searchForm {
+
+                width: 100%;
+
+                margin-top: 10px;
+
+                margin-bottom: 10px;
+
+            }
+
+
+            #searchInput {
+
+                width: 100%;
+
+            }
+
+
+            #searchForm .search {
+
+                white-space: nowrap;
+
+            }
+
+
+            .profile-menu {
+
+                width: 100%;
+
+            }
+
+
+            .profile-toggle {
+
+                display: inline-flex;
+
+                align-items: center;
+
+                gap: 5px;
+
+                padding: 10px 5px;
+
+            }
+
+
+            .profile-menu .dropdown-menu {
+
+                position: static !important;
+
+                width: 100%;
+
+                margin-top: 5px;
+
+            }
+
+        }
+
+
+
+        /* ================================================= */
+        /* MAIN COLLECTION CAROUSEL */
+        /* ================================================= */
+
+        #collectionCarousel {
+
+            width: 100%;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        #collectionCarousel .carousel-inner {
+
+            width: 100%;
+
+        }
+
+
+        #collectionCarousel .carousel-item {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 70vh;
+
+            min-height: 450px;
+
+            background-position: center;
+
+            background-size: cover;
+
+            background-repeat: no-repeat;
+
+        }
+
+
+        /* ================================================= */
+        /* CAROUSEL IMAGES */
+        /* ================================================= */
+
+
+        #collectionCarousel .carousel-item.bg1 {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(235, 176, 67, 0.541),
+                    rgba(235, 177, 19, 0.338)
+                ),
+
+                url("images/matthew-reyes-epeysb2YqCY-unsplash (1).jpg");
+
+        }
+
+
+        #collectionCarousel .carousel-item.bg2 {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(235, 176, 67, 0.541),
+                    rgba(235, 177, 19, 0.338)
+                ),
+
+                url("images/fujiphilm-ENhZFAFDyIU-unsplash.jpg");
+
+        }
+
+
+        #collectionCarousel .carousel-item.bg3 {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(235, 176, 67, 0.541),
+                    rgba(235, 177, 19, 0.338)
+                ),
+
+                url("images/sophie-skold-Tr6P2iOJDqE-unsplash.jpg");
+
+        }
+
+
+        #collectionCarousel .carousel-item.bg4 {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(235, 176, 67, 0.541),
+                    rgba(235, 177, 19, 0.338)
+                ),
+
+                url("images/rydale-clothing-sZxbs-5qp-0-unsplash.jpg");
+
+        }
+
+
+        /* ================================================= */
+        /* CAROUSEL CAPTION */
+        /* ================================================= */
+
+        #collectionCarousel .mycaption {
+
+            position: absolute;
+
+            width: 40%;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+
+            z-index: 5;
+
+        }
+
+
+        #collectionCarousel .mycaption h1 {
+
+            color: rgb(70, 14, 5);
+
+            font-family: "Shadows Into Light", cursive;
+
+            font-weight: 400;
+
+            padding: 10px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        #collectionCarousel .mycaption p {
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* ================================================= */
+        /* SHOP NOW */
+        /* ================================================= */
+
+        #collectionCarousel .shopnow {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            color: #ffffff;
+
+            border: 1px solid #ffffff;
+
+            padding: 10px 20px;
+
+            border-radius: 2px;
+
+        }
+
+
+        #collectionCarousel .shopnow:hover {
+
+            background-color: #080000;
+
+            color: rgb(230,185,100);
+
+        }
+
+
+        /* ================================================= */
+        /* CAROUSEL CONTROLS */
+        /* ================================================= */
+
+        #collectionCarousel .carousel-control-prev,
+        #collectionCarousel .carousel-control-next {
+
+            width: 8%;
+
+            z-index: 10;
+
+        }
+
+
+        #collectionCarousel .carousel-indicators {
+
+            z-index: 10;
+
+        }
+
+
+        /* ================================================= */
+        /* MOBILE CAROUSEL */
+        /* ================================================= */
+
+        @media (max-width: 768px) {
+
+
+            #collectionCarousel .carousel-item {
+
+                height: 55vh;
+
+                min-height: 400px;
+
+            }
+
+
+            #collectionCarousel .mycaption {
+
+                width: 75%;
+
+            }
+
+
+            #collectionCarousel .mycaption h1 {
+
+                font-size: 28px;
+
+                padding: 5px;
+
+                margin-bottom: 10px;
+
+            }
+
+
+            #collectionCarousel .mycaption p {
+
+                font-size: 14px;
+
+                line-height: 1.5;
+
+            }
+
+
+            #collectionCarousel .shopnow {
+
+                padding: 8px 15px;
+
+                font-size: 14px;
+
+            }
+
+        }
+
+
+
+        /* ================================================= */
+        /* ABOUT US MOBILE FIX */
+        /* ================================================= */
+
+        @media (max-width: 768px) {
+
+
+            .about {
+
+                padding: 45px 20px;
+
+                width: 100%;
+
+                overflow: hidden;
+
+            }
+
+
+            .about-container {
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                justify-content: center;
+
+                gap: 30px;
+
+                width: 100%;
+
+            }
+
+
+            .about-image {
+
+                width: 100%;
+
+                display: flex;
+
+                justify-content: center;
+
+            }
+
+
+            .about-image img {
+
+                width: 100%;
+
+                max-width: 350px;
+
+                height: auto;
+
+                display: block;
+
+                border-radius: 15px;
+
+            }
+
+
+            .about-content {
+
+                width: 100%;
+
+                max-width: 600px;
+
+                text-align: left;
+
+                padding: 0 5px;
+
+            }
+
+
+            .about-content h1 {
+
+                font-size: 30px;
+
+                margin-bottom: 15px;
+
+            }
+
+
+            .about-content p {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                font-size: 16px;
+
+                line-height: 1.6;
+
+                margin-bottom: 15px;
+
+                word-wrap: break-word;
+
+            }
+
+
+            .about-content button {
+
+                margin-top: 10px;
+
+            }
+
+        }
+
+
+
+        /* ================================================= */
+        /* SMALL MOBILE */
+        /* ================================================= */
+
+        @media (max-width: 480px) {
+
+
+            .about {
+
+                padding: 40px 18px;
+
+            }
+
+
+            .about-container {
+
+                gap: 25px;
+
+            }
+
+
+            .about-image img {
+
+                width: 100%;
+
+                max-width: 330px;
+
+            }
+
+
+            .about-content {
+
+                width: 100%;
+
+                padding: 0;
+
+            }
+
+
+            .about-content h1 {
+
+                font-size: 27px;
+
+            }
+
+
+            .about-content p {
+
+                font-size: 15px;
+
+                line-height: 1.6;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow">
+
+        <div class="container-fluid">
+
+
+            <!-- LOGO -->
+
+            <a
+                class="navbar-brand logo"
+                href="shadow.html">
+
+                <i class="bi bi-bag"></i>
+
+                Shadow
+
+            </a>
+
+
+            <!-- MOBILE BUTTON -->
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav"
+                aria-controls="nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <!-- NAV CONTENT -->
+
+            <div
+                class="collapse navbar-collapse"
+                id="nav">
+
+
+                <!-- NAV LINKS -->
+
+                <ul class="navbar-nav me-auto">
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="#homeHero">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="#newarr">
+
+                            New Arrivial
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="#bestseller">
+
+                            Bestseller
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="mens.html">
+
+                            Mens
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="womens.html">
+
+                            Womens
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="#aboutus">
+
+                            About us
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+
+                <!-- ================================================= -->
+                <!-- SEARCH -->
+                <!-- ================================================= -->
+
+                <form
+                    class="d-flex me-3"
+                    id="searchForm">
+
+
+                    <input
+                        class="form-control me-2"
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search..."
+                        autocomplete="off">
+
+
+                    <button
+                        class="btn search"
+                        type="submit">
+
+                        Search
+
+                    </button>
+
+
+                </form>
+
+
+                <!-- ================================================= -->
+                <!-- PROFILE -->
+                <!-- ================================================= -->
+
+                <div
+                    class="nav-item dropdown profile-menu">
+
+
+                    <a
+                        class="nav-link dropdown-toggle text-white profile-toggle"
+                        href="#"
+                        id="profileDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+
+                        <i class="bi bi-person-circle fs-5"></i>
+
+
+                    </a>
+
+
+                    <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        id="profileMenu"
+                        aria-labelledby="profileDropdown">
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================================================= -->
+    <!-- HERO SECTION -->
+    <!-- ================================================= -->
+
+    <div
+        id="homeHero"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        data-bs-interval="4000">
+
+
+        <div class="carousel-inner">
+
+
+            <div
+                class="carousel-item active bg">
+
+
+                <div class="mycaption">
+
+
+                    <h1>
+
+                        Welcome to Shadow Store
+
+                    </h1>
+
+
+                    <p>
+
+                        Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Fuga culpa enim corporis
+                        quibusdam soluta molestiae maiores modi
+                        obcaecati id dolorum, non harum ducimus
+                        delectus fugit commodi error illo.
+                        Dolorum, nihil.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- INFO BAR -->
+    <!-- ================================================= -->
+
+    <div class="info-bar">
+
+
+        <div class="info-item">
+
+
+            <i class="bi bi-cash"></i>
+
+
+            <p>
+
+                10% Cashback
+
+                <br>
+
+                <span>
+
+                    on all App orders
+
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="info-item">
+
+
+            <i class="bi bi-arrow-repeat"></i>
+
+
+            <p>
+
+                30 days Easy Returns
+
+                <br>
+
+                <span>
+
+                    & Exchanges
+
+                </span>
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="info-item">
+
+
+            <i class="bi bi-truck"></i>
+
+
+            <p>
+
+                Free & Fast Shipping
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- NEW ARRIVAL -->
+    <!-- ================================================= -->
+
+    <div
+        class="container"
+        id="newarr">
+
+
+        <h1>
+
+            New Arrival
+
+        </h1>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <img
+                    src="images/dress1.jpg"
+                    alt="New Arrival">
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="images/shirt1.png"
+                    alt="New Arrival">
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="images/dress3.jpg"
+                    alt="New Arrival">
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="images/shirt3.jpg"
+                    alt="New Arrival">
+
+            </div>
+
+
+        </div>
+
+
+        <p class="desc">
+
+            Discover premium clothing designs crafted
+            for style, comfort, and confidence.
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- COLLECTION CAROUSEL -->
+    <!-- ================================================= -->
+
+    <div
+        id="collectionCarousel"
+        class="carousel slide demoo"
+        data-bs-ride="carousel"
+        data-bs-interval="4000">
+
+
+        <!-- ================================================= -->
+        <!-- INDICATORS -->
+        <!-- ================================================= -->
+
+        <div class="carousel-indicators">
+
+
+            <button
+                type="button"
+                data-bs-target="#collectionCarousel"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1">
+            </button>
+
+
+            <button
+                type="button"
+                data-bs-target="#collectionCarousel"
+                data-bs-slide-to="1"
+                aria-label="Slide 2">
+            </button>
+
+
+            <button
+                type="button"
+                data-bs-target="#collectionCarousel"
+                data-bs-slide-to="2"
+                aria-label="Slide 3">
+            </button>
+
+
+            <button
+                type="button"
+                data-bs-target="#collectionCarousel"
+                data-bs-slide-to="3"
+                aria-label="Slide 4">
+            </button>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- SLIDES -->
+        <!-- ================================================= -->
+
+        <div class="carousel-inner">
+
+
+            <!-- SLIDE 1 -->
+
+            <div class="carousel-item active bg1">
+
+
+                <div class="mycaption">
+
+
+                    <h1>
+
+                        Our new jeans jackets
+
+                    </h1>
+
+
+                    <p>
+
+                        Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Tenetur magni corporis,
+                        consequuntur tempora cupiditate
+                        exercitationem.
+
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="shopnow">
+
+                        Shop now
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SLIDE 2 -->
+
+            <div class="carousel-item bg2">
+
+
+                <div class="mycaption">
+
+
+                    <h1>
+
+                        Our new coat designs
+
+                    </h1>
+
+
+                    <p>
+
+                        Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Tenetur magni corporis,
+                        consequuntur tempora cupiditate
+                        exercitationem.
+
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="shopnow">
+
+                        Shop now
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SLIDE 3 -->
+
+            <div class="carousel-item bg3">
+
+
+                <div class="mycaption">
+
+
+                    <h1>
+
+                        Our new summer collection
+
+                    </h1>
+
+
+                    <p>
+
+                        Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Tenetur magni corporis,
+                        consequuntur tempora cupiditate
+                        exercitationem.
+
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="shopnow">
+
+                        Shop now
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SLIDE 4 -->
+
+            <div class="carousel-item bg4">
+
+
+                <div class="mycaption">
+
+
+                    <h1>
+
+                        Our new collection
+
+                    </h1>
+
+
+                    <p>
+
+                        Lorem, ipsum dolor sit amet consectetur
+                        adipisicing elit. Tenetur magni corporis,
+                        consequuntur temporary cupiditate
+                        exercitationem.
+
+                    </p>
+
+
+                    <a
+                        href="#"
+                        class="shopnow">
+
+                        Shop now
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- PREVIOUS BUTTON -->
+        <!-- ================================================= -->
+
+        <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#collectionCarousel"
+            data-bs-slide="prev">
+
+
+            <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true">
+            </span>
+
+
+            <span class="visually-hidden">
+
+                Previous
+
+            </span>
+
+
+        </button>
+
+
+
+        <!-- ================================================= -->
+        <!-- NEXT BUTTON -->
+        <!-- ================================================= -->
+
+        <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#collectionCarousel"
+            data-bs-slide="next">
+
+
+            <span
+                class="carousel-control-next-icon"
+                aria-hidden="true">
+            </span>
+
+
+            <span class="visually-hidden">
+
+                Next
+
+            </span>
+
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- ================================================= -->
+    <!-- BEST SELLER -->
+    <!-- ================================================= -->
+
+    <section
+        class="best-seller"
+        id="bestseller">
+
+
+        <div class="best-seller-header">
+
+
+            <div>
+
+
+                <p class="section-small-title">
+
+                    OUR FAVORITES
+
+                </p>
+
+
+                <h2>
+
+                    Best Seller
+
+                </h2>
+
+
+            </div>
+
+
+            <a
+                href="mens.html"
+                class="see-all-btn">
+
+                See All
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+
+        </div>
+
+
+
+        <div class="best-seller-grid">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/jacketw1.jpg"
+                        alt="Molly Jacket">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Molly Jacket
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Women's Jacket
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,448
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/dress5.jpg"
+                        alt="Tulle Skirt">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Tulle Skirt
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Women's Top
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,170
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/jacket4.jpg"
+                        alt="Gaby Jacket">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Gaby Jacket
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Women's Jacket
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,245
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/dress3.jpg"
+                        alt="Long Sequin">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Long Sequin
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Women's Formal Dress
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,339
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 5 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/shirt3.jpg"
+                        alt="Cotton Pants">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Cotton Pants: Choco Brownr
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Men Pants
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,940
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 6 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/shirt4.jpg"
+                        alt="Summer Shirt">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Summer Shirt: Desi Heat
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Holiday Shirts
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,245
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 7 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/shirt2.png"
+                        alt="Peanuts Shirt">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Peanuts: Snuggly Snoopy
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Men's Shirt
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,339
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PRODUCT 8 -->
+
+            <div class="shop-product">
+
+
+                <a
+                    href="#"
+                    class="product-image-link">
+
+
+                    <img
+                        src="images/jacket3.jpg"
+                        alt="Korean Pants">
+
+
+                </a>
+
+
+                <div class="product-info">
+
+
+                    <h3>
+
+                        Korean Pants: Rhodium
+
+                    </h3>
+
+
+                    <p class="product-category">
+
+                        Men Korean Pants
+
+                    </p>
+
+
+                    <p class="product-price">
+
+                        ₹1,139
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- ABOUT US -->
+    <!-- ================================================= -->
+
+    <section
+        class="about"
+        id="aboutus">
+
+
+        <div class="about-container">
+
+
+            <!-- IMAGE -->
+
+            <div class="about-image">
+
+
+                <img
+                    src="images/owner.jpg"
+                    alt="About Shadow">
+
+
+            </div>
+
+
+
+            <!-- CONTENT -->
+
+            <div class="about-content">
+
+
+                <h1>
+
+                    About Us
+
+                </h1>
+
+
+                <p>
+
+                    At Shadow, we believe fashion is more
+                    than just clothing — it’s a statement.
+
+                    We design premium outfits that combine
+                    comfort, style, and confidence.
+
+                </p>
+
+
+                <p>
+
+                    Our mission is to deliver high-quality
+                    fashion that fits your lifestyle,
+                    whether you're casual, bold, or
+                    somewhere in between.
+
+                </p>
+
+
+                <button>
+
+                    Explore More
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================================================= -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <footer class="shadow-footer">
+
+
+        <div class="footer-grid">
+
+
+            <!-- SHOP FOR -->
+
+            <div>
+
+
+                <h3>
+
+                    SHOP FOR
+
+                </h3>
+
+
+                <p>
+
+                    Men T-Shirts
+
+                </p>
+
+
+                <p>
+
+                    Women Tops
+
+                </p>
+
+
+                <p>
+
+                    Hoodies
+
+                </p>
+
+
+                <p>
+
+                    Jackets
+
+                </p>
+
+
+                <p>
+
+                    Oversized T-Shirts
+
+                </p>
+
+
+                <h3 class="mt">
+
+                    STORE NEAR ME
+
+                </h3>
+
+
+                <p>
+
+                    Mumbai
+
+                </p>
+
+
+                <p>
+
+                    Pune
+
+                </p>
+
+
+                <p>
+
+                    Bangalore
+
+                </p>
+
+
+                <p>
+
+                    Surat
+
+                </p>
+
+
+                <a href="#">
+
+                    View More
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- NEED HELP -->
+
+            <div>
+
+
+                <h3>
+
+                    NEED HELP
+
+                </h3>
+
+
+                <p>
+
+                    Contact Us
+
+                </p>
+
+
+                <p>
+
+                    Track Order
+
+                </p>
+
+
+                <p>
+
+                    Returns & Refunds
+
+                </p>
+
+
+                <p>
+
+                    FAQs
+
+                </p>
+
+
+                <p>
+
+                    My Account
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- COMPANY -->
+
+            <div>
+
+
+                <h3>
+
+                    COMPANY
+
+                </h3>
+
+
+                <p>
+
+                    About Us
+
+                </p>
+
+
+                <p>
+
+                    Careers
+
+                </p>
+
+
+                <p>
+
+                    Gift Vouchers
+
+                </p>
+
+
+                <p>
+
+                    Community Initiatives
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- MORE INFO -->
+
+            <div>
+
+
+                <h3>
+
+                    MORE INFO
+
+                </h3>
+
+
+                <p>
+
+                    T&C
+
+                </p>
+
+
+                <p>
+
+                    Privacy Policy
+
+                </p>
+
+
+                <p>
+
+                    Sitemap
+
+                </p>
+
+
+                <p>
+
+                    Get Notified
+
+                </p>
+
+
+                <p>
+
+                    Blogs
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER CENTER -->
+        <!-- ================================================= -->
+
+        <div class="footer-center">
+
+
+            <span>
+
+                <i class="bi bi-currency-rupee"></i>
+
+                COD Available
+
+            </span>
+
+
+            <span>
+
+                <i class="bi bi-arrow-repeat"></i>
+
+                30 Days Easy Returns & Exchanges
+
+            </span>
+
+
+            <h4>
+
+                EXPERIENCE THE SHADOW STORE APP
+
+            </h4>
+
+
+            <div class="app-buttons">
+
+
+                <button>
+
+                    <i class="bi bi-google-play"></i>
+
+                    Google Play
+
+                </button>
+
+
+                <button>
+
+                    <i class="bi bi-apple"></i>
+
+                    App Store
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- SOCIAL -->
+        <!-- ================================================= -->
+
+        <div class="social">
+
+
+            <span>
+
+                Follow Us:
+
+            </span>
+
+
+            <i class="bi bi-facebook"></i>
+
+            <i class="bi bi-instagram"></i>
+
+            <i class="bi bi-snapchat"></i>
+
+            <i class="bi bi-twitter-x"></i>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- ARTIST -->
+        <!-- ================================================= -->
+
+        <div class="artist-box">
+
+
+            <span>
+
+                ARTIST'S DETAILS
+
+            </span>
+
+
+            <b>
+
+                +
+
+            </b>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- PAYMENT -->
+        <!-- ================================================= -->
+
+        <div class="payment-line">
+
+
+            <span>
+
+                100% Secure Payment:
+
+            </span>
+
+
+            <span>
+
+                PhonePe
+
+            </span>
+
+
+            <span>
+
+                GPay
+
+            </span>
+
+
+            <span>
+
+                Amazon Pay
+
+            </span>
+
+
+            <span>
+
+                Paytm
+
+            </span>
+
+
+            <span>
+
+                | Shipping Partners:
+
+            </span>
+
+
+            <span>
+
+                Delhivery
+
+            </span>
+
+
+            <span>
+
+                Ecom Express
+
+            </span>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- ================================================= -->
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <!-- IMPORTANT: KEEP THIS AT THE BOTTOM -->
+    <!-- ================================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+
+    <!-- ================================================= -->
+    <!-- SHADOW JAVASCRIPT -->
+    <!-- ================================================= -->
+
+    <script>
+
+
+        /* ================================================= */
+        /* AUTHENTICATION MENU */
+        /* ================================================= */
+
+
+        function updateAuthMenu() {
+
+
+            const profileMenu =
+                document.getElementById("profileMenu");
+
+
+            const loggedIn =
+                localStorage.getItem("shadowLoggedIn") === "true";
+
+
+            const currentUserData =
+                localStorage.getItem("shadowCurrentUser");
+
+
+            let currentUser = null;
+
+
+            if (currentUserData) {
+
+
+                try {
+
+
+                    currentUser =
+                        JSON.parse(currentUserData);
+
+
+                } catch (error) {
+
+
+                    currentUser = null;
+
+
+                }
+
+            }
+
+
+
+            /* ================================================= */
+            /* LOGGED IN */
+            /* ================================================= */
+
+
+            if (loggedIn && currentUser) {
+
+
+                profileMenu.innerHTML = `
+
+                    <li>
+
+                        <span class="dropdown-item-text">
+
+                            Welcome, ${currentUser.name}
+
+                        </span>
+
+                    </li>
+
+
+                    <li>
+
+                        <hr class="dropdown-divider">
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            class="dropdown-item"
+                            href="profile.html">
+
+                            My Profile
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            class="dropdown-item text-danger"
+                            href="#"
+                            onclick="logoutUser(); return false;">
+
+                            Logout
+
+                        </a>
+
+                    </li>
+
+                `;
+
+
+            }
+
+
+            /* ================================================= */
+            /* LOGGED OUT */
+            /* ================================================= */
+
+
+            else {
+
+
+                profileMenu.innerHTML = `
+
+                    <li>
+
+                        <a
+                            class="dropdown-item"
+                            href="login.html">
+
+                            Login
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a
+                            class="dropdown-item"
+                            href="signup.html">
+
+                            Sign Up
+
+                        </a>
+
+                    </li>
+
+                `;
+
+            }
+
+        }
+
+
+
+        /* ================================================= */
+        /* LOGOUT */
+        /* ================================================= */
+
+
+        function logoutUser() {
+
+
+            localStorage.removeItem(
+                "shadowLoggedIn"
+            );
+
+
+            localStorage.removeItem(
+                "shadowCurrentUser"
+            );
+
+
+            alert(
+                "You have been logged out."
+            );
+
+
+            window.location.href =
+                "shadow.html";
+
+        }
+
+
+
+        /* ================================================= */
+        /* SEARCH */
+        /* ================================================= */
+
+
+        const searchForm =
+            document.getElementById("searchForm");
+
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+
+        searchForm.addEventListener(
+            "submit",
+            function(event) {
+
+
+                event.preventDefault();
+
+
+                const searchText =
+                    searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+                const products =
+                    document.querySelectorAll(
+                        ".shop-product"
+                    );
+
+
+                /* ================================================= */
+                /* EMPTY SEARCH */
+                /* ================================================= */
+
+
+                if (searchText === "") {
+
+
+                    products.forEach(
+                        function(product) {
+
+                            product.style.display = "";
+
+                        }
+                    );
+
+
+                    return;
+
+                }
+
+
+                /* ================================================= */
+                /* SEARCH PRODUCTS */
+                /* ================================================= */
+
+
+                products.forEach(
+                    function(product) {
+
+
+                        const productText =
+                            product.textContent
+                            .toLowerCase();
+
+
+                        if (
+                            productText.includes(searchText)
+                        ) {
+
+
+                            product.style.display = "";
+
+
+                        }
+
+
+                        else {
+
+
+                            product.style.display = "none";
+
+
+                        }
+
+                    }
+                );
+
+
+                document
+                    .getElementById("bestseller")
+                    .scrollIntoView({
+
+                        behavior: "smooth"
+
+                    });
+
+            }
+        );
+
+
+
+        /* ================================================= */
+        /* ESCAPE SEARCH */
+        /* ================================================= */
+
+
+        searchInput.addEventListener(
+            "keydown",
+            function(event) {
+
+
+                if (event.key === "Escape") {
+
+
+                    searchInput.value = "";
+
+
+                    const products =
+                        document.querySelectorAll(
+                            ".shop-product"
+                        );
+
+
+                    products.forEach(
+                        function(product) {
+
+                            product.style.display = "";
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* ================================================= */
+        /* CLOSE MOBILE MENU AFTER CLICK */
+        /* ================================================= */
+
+
+        document
+            .querySelectorAll("#nav .nav-link")
+            .forEach(
+                function(link) {
+
+
+                    link.addEventListener(
+                        "click",
+                        function() {
+
+
+                            const nav =
+                                document.getElementById("nav");
+
+
+                            if (
+                                window.innerWidth < 992 &&
+                                nav.classList.contains("show")
+                            ) {
+
+
+                                const navbarCollapse =
+                                    bootstrap.Collapse
+                                    .getInstance(nav);
+
+
+                                if (navbarCollapse) {
+
+
+                                    navbarCollapse.hide();
+
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+        /* ================================================= */
+        /* START AUTH MENU */
+        /* ================================================= */
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+
+                updateAuthMenu();
+
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
