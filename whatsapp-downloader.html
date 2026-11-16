@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Bulk Downloader</title>
+<style>
+  :root{--bg:#f4f7f5;--card:#fff;--ink:#12201a;--mute:#5b6b63;--line:#dde5e0;--brand:#128c7e;--brand2:#25d366;--chip:#e7f3ee;--danger:#c0392b}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1512;--card:#17211c;--ink:#e8f1ec;--mute:#8fa399;--line:#27352e;--chip:#1e2e27}}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:linear-gradient(135deg,#075e54,#128c7e 60%,#25d366);color:#fff;padding:28px 16px 36px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  h1{margin:0 0 6px;font-size:1.6rem}
+  header p{margin:0;opacity:.9}
+  main{margin-top:-22px;padding-bottom:90px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .drop{border:2px dashed var(--brand);border-radius:12px;padding:26px 14px;text-align:center;transition:.15s}
+  .drop.over{background:var(--chip)}
+  .drop b{display:block;font-size:1.05rem;margin-bottom:6px}
+  .drop small{color:var(--mute)}
+  .btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  button,.btn{font:inherit;border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:var(--brand);color:#fff;font-weight:600}
+  button.ghost{background:var(--chip);color:var(--ink);font-weight:500}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  details{margin-top:12px;color:var(--mute);font-size:.9rem}
+  details ol{margin:8px 0 0;padding-left:20px;line-height:1.5}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{background:var(--chip);color:var(--ink);padding:6px 11px;border-radius:99px;font-size:.85rem;cursor:pointer;border:1px solid transparent;user-select:none}
+  .chip.on{background:var(--brand);color:#fff}
+  input[type=search],select{font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+  input[type=search]{flex:1;min-width:150px}
+  .list{max-height:55vh;overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}
+  .item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+  .item:last-child{border-bottom:0}
+  .item:hover{background:var(--chip)}
+  .item input{width:18px;height:18px;accent-color:var(--brand);flex:none}
+  .ext{flex:none;width:42px;text-align:center;font-size:.68rem;font-weight:700;color:#fff;border-radius:6px;padding:4px 0;background:#7f8c8d}
+  .ext.pdf{background:#d9453b}.ext.doc,.ext.docx{background:#2b6cb0}.ext.xls,.ext.xlsx{background:#1f8a4c}
+  .ext.ppt,.ext.pptx{background:#d35400}.ext.img{background:#8e44ad}.ext.vid{background:#16a085}.ext.aud{background:#e67e22}.ext.zip{background:#6d4c41}
+  .meta{min-width:0;flex:1}
+  .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sub{font-size:.78rem;color:var(--mute)}
+  .bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -4px 14px rgba(0,0,0,.08)}
+  .bar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .bar .info{flex:1;min-width:140px;font-size:.9rem}
+  progress{width:100%;height:8px;margin-top:6px;accent-color:var(--brand2)}
+  .hidden{display:none!important}
+  .empty{padding:24px;text-align:center;color:var(--mute)}
+  .err{color:var(--danger);margin-top:8px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>WhatsApp Bulk Downloader</h1>
+  <p>Pick many files from a chat, get them all in one ZIP, sorted into folders.</p>
+</div></header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="drop" id="drop">
+      <b>Drop your WhatsApp export here</b>
+      <small>A chat-export .zip, or a media folder, or loose files. Nothing leaves your device.</small>
+      <div class="btns">
+        <button id="pickZip">Choose ZIP</button>
+        <button id="pickFolder" class="ghost">Choose folder</button>
+        <button id="pickFiles" class="ghost">Choose files</button>
+      </div>
+      <input id="zipIn" type="file" accept=".zip,application/zip" class="hidden">
+      <input id="dirIn" type="file" webkitdirectory directory multiple class="hidden">
+      <input id="fileIn" type="file" multiple class="hidden">
+    </div>
+    <details>
+      <summary>How do I get my files out of WhatsApp?</summary>
+      <ol>
+        <li>Open the chat (e.g. <i>Message yourself</i>) in WhatsApp.</li>
+        <li>Tap <b>⋮ → More → Export chat → Include media</b>.</li>
+        <li>Save the ZIP to your phone (or share it to Files / Drive).</li>
+        <li>Open this page on the phone and choose that ZIP. Or choose the folder
+            <code>Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Documents</code>.</li>
+        <li>Tick what you want, choose how to organise it, tap <b>Download ZIP</b>.</li>
+      </ol>
+    </details>
+    <div class="err hidden" id="err"></div>
+  </section>
+
+  <section class="card hidden" id="browser">
+    <div class="row">
+      <input type="search" id="q" placeholder="Search file names…">
+      <select id="sort">
+        <option value="date">Newest first</option>
+        <option value="name">Name A–Z</option>
+        <option value="size">Largest first</option>
+      </select>
+    </div>
+    <div class="chips" id="chips" style="margin-top:10px"></div>
+    <div class="row" style="margin-top:10px">
+      <button class="ghost" id="selVisible">Select shown</button>
+      <button class="ghost" id="selNone">Clear</button>
+      <span class="sub" id="count"></span>
+    </div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="card hidden" id="opts">
+    <div class="row">
+      <label for="org"><b>Put them in folders by:</b></label>
+      <select id="org">
+        <option value="type">File type (PDF, Images, Videos…)</option>
+        <option value="name">Name group (e.g. “ML PRA”)</option>
+        <option value="month">Month received</option>
+        <option value="none">No folders (flat)</option>
+      </select>
+    </div>
+  </section>
+</main>
+
+<div class="bar hidden" id="bar"><div class="wrap">
+  <div class="info"><span id="selInfo">0 selected</span>
+    <progress id="prog" class="hidden" max="100" value="0"></progress></div>
+  <button id="go" disabled>Download ZIP</button>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const TYPES = {
+  PDFs:['pdf'], Documents:['doc','docx','txt','rtf','odt','csv','ipynb'], Spreadsheets:['xls','xlsx'],
+  Slides:['ppt','pptx'], Images:['jpg','jpeg','png','gif','webp','heic'],
+  Videos:['mp4','mov','mkv','3gp','avi','webm'], Audio:['opus','mp3','m4a','aac','ogg','wav','amr'],
+  Archives:['zip','rar','7z']
+};
+const BADGE = {PDFs:'pdf',Documents:'doc',Spreadsheets:'xls',Slides:'ppt',Images:'img',Videos:'vid',Audio:'aud',Archives:'zip'};
+const extOf = n => (n.split('.').pop() || '').toLowerCase();
+const typeOf = n => { const e = extOf(n); for (const k in TYPES) if (TYPES[k].includes(e)) return k; return 'Other'; };
+const fmt = b => b < 1024 ? b+' B' : b < 1048576 ? (b/1024).toFixed(0)+' kB' : (b/1048576).toFixed(1)+' MB';
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let files = [];           // {id,name,size,date,type,get:()=>Promise<Blob>}
+let selected = new Set(), typeFilter = new Set();
+
+function showErr(m){ const e=$('err'); e.textContent=m; e.classList.toggle('hidden',!m); }
+
+// ---------- loading ----------
+async function loadZip(file){
+  const zip = await JSZip.loadAsync(file);
+  let chat = '';
+  const chatEntry = Object.values(zip.files).find(f => !f.dir && /(^|\/)(_chat|WhatsApp Chat.*)\.txt$/i.test(f.name));
+  if (chatEntry) chat = await chatEntry.async('string');
+  const dates = parseChatDates(chat);
+  for (const f of Object.values(zip.files)) {
+    if (f.dir || f === chatEntry) continue;
+    const base = f.name.split('/').pop();
+    if (!base || base.startsWith('.')) continue;
+    add(base, f._data && f._data.uncompressedSize || 0, dates[base] || f.date, () => f.async('blob'));
+  }
+}
+function parseChatDates(txt){
+  // lines like "12/11/2026, 12:23 am - Me: ML PRA (1).pdf (file attached)"  or "[12/11/26, 12:23:10 AM] Me: <attached: x.pdf>"
+  const out = {};
+  for (const line of txt.split(/\r?\n/)) {
+    const m = line.match(/(\d{1,2})[\/.](\d{1,2})[\/.](\d{2,4})/);
+    const a = line.match(/(?:<attached:\s*([^>]+)>)|(?:[:‎\s]([^:\n]+?\.\w{2,5})\s*\(file attached\))/);
+    if (m && a) {
+      const name = (a[1] || a[2]).trim().replace(/^.*?:\s+/, '');
+      let [_, d, mo, y] = m; y = +y < 100 ? 2000 + +y : +y;
+      let dt = new Date(y, +mo - 1, +d); if (isNaN(dt)) dt = new Date(y, +d - 1, +mo);
+      out[name] = dt;
+    }
+  }
+  return out;
+}
+function add(name, size, date, get){
+  files.push({id:files.length, name, size, date: date instanceof Date ? date : new Date(date||Date.now()), type:typeOf(name), get});
+}
+async function ingest(list){
+  showErr('');
+  try {
+    for (const f of list) {
+      if (/\.zip$/i.test(f.name) && list.length === 1) await loadZip(f);
+      else if (!/^(_chat|WhatsApp Chat.*)\.txt$/i.test(f.name)) add(f.name, f.size, new Date(f.lastModified), async () => f);
+    }
+  } catch (e) { showErr('Could not read that file: ' + e.message); }
+  if (!files.length) { showErr('No files found in that selection.'); return; }
+  files.sort((a,b)=>b.date-a.date);
+  files.forEach((f,i)=>f.id=i);
+  selected = new Set(); typeFilter = new Set();
+  ['browser','opts','bar'].forEach(i=>$(i).classList.remove('hidden'));
+  render();
+}
+
+// ---------- rendering ----------
+function visible(){
+  const q = $('q').value.trim().toLowerCase();
+  let v = files.filter(f => (!typeFilter.size || typeFilter.has(f.type)) && (!q || f.name.toLowerCase().includes(q)));
+  const s = $('sort').value;
+  v.sort(s==='name' ? (a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true}) : s==='size' ? (a,b)=>b.size-a.size : (a,b)=>b.date-a.date);
+  return v;
+}
+function render(){
+  const counts = {}; files.forEach(f => counts[f.type] = (counts[f.type]||0)+1);
+  $('chips').innerHTML = Object.keys(counts).map(t =>
+    `<span class="chip ${typeFilter.has(t)?'on':''}" data-t="${t}">${t} · ${counts[t]}</span>`).join('');
+  const v = visible();
+  $('list').innerHTML = v.length ? v.map(f => `
+    <label class="item"><input type="checkbox" data-id="${f.id}" ${selected.has(f.id)?'checked':''}>
+      <span class="ext ${BADGE[f.type]||''}">${esc(extOf(f.name).slice(0,4).toUpperCase()||'FILE')}</span>
+      <span class="meta"><div class="name">${esc(f.name)}</div>
+      <div class="sub">${fmt(f.size)} · ${f.date.toLocaleDateString()}</div></span></label>`).join('')
+    : '<div class="empty">Nothing matches.</div>';
+  $('count').textContent = `${v.length} shown of ${files.length}`;
+  updateBar();
+}
+function updateBar(){
+  const n = selected.size, sz = files.filter(f=>selected.has(f.id)).reduce((a,f)=>a+f.size,0);
+  $('selInfo').textContent = `${n} selected · ${fmt(sz)}`;
+  $('go').disabled = !n;
+}
+
+// ---------- download ----------
+const safe = s => s.replace(/[\\/:*?"<>|]/g,'_').trim() || 'Other';
+function folderFor(f, mode){
+  if (mode==='type') return f.type;
+  if (mode==='month') return f.date.getFullYear()+'-'+String(f.date.getMonth()+1).padStart(2,'0');
+  if (mode==='name') {
+    const base = f.name.replace(/\.[^.]+$/,'').replace(/(\s*\([\d,\s]+\))+\s*$/,'').replace(/[\s_-]+\d+$/,'').trim();
+    return base || 'Other';
+  }
+  return '';
+}
+$('go').onclick = async () => {
+  const mode = $('org').value, zip = new JSZip(), used = new Set();
+  const chosen = files.filter(f => selected.has(f.id));
+  $('go').disabled = true; $('prog').classList.remove('hidden'); $('prog').value = 0;
+  try {
+    for (let i = 0; i < chosen.length; i++) {
+      const f = chosen[i], dir = safe(folderFor(f, mode));
+      let path = (dir && mode!=='none' ? dir + '/' : '') + f.name, k = 1;
+      while (used.has(path)) path = (dir && mode!=='none' ? dir+'/' : '') + f.name.replace(/(\.[^.]*)?$/, ` (${k++})$1`);
+      used.add(path);
+      zip.file(path, await f.get(), {date: f.date});
+      $('prog').value = (i + 1) / chosen.length * 50;
+      $('selInfo').textContent = `Reading ${i+1}/${chosen.length}…`;
+    }
+    const blob = await zip.generateAsync({type:'blob', compression:'STORE'}, m => {
+      $('prog').value = 50 + m.percent / 2; $('selInfo').textContent = `Zipping ${m.percent.toFixed(0)}%…`;
+    });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'whatsapp-files-' + new Date().toISOString().slice(0,10) + '.zip';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+  } catch (e) { showErr('Download failed: ' + e.message); }
+  $('prog').classList.add('hidden'); updateBar();
+};
+
+// ---------- events ----------
+$('pickZip').onclick = () => $('zipIn').click();
+$('pickFolder').onclick = () => $('dirIn').click();
+$('pickFiles').onclick = () => $('fileIn').click();
+['zipIn','dirIn','fileIn'].forEach(id => $(id).onchange = e => { files = []; ingest([...e.target.files]); e.target.value=''; });
+const drop = $('drop');
+['dragenter','dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => { files = []; ingest([...e.dataTransfer.files]); });
+$('chips').onclick = e => { const t = e.target.dataset.t; if (!t) return; typeFilter.has(t) ? typeFilter.delete(t) : typeFilter.add(t); render(); };
+$('list').onchange = e => { const id = +e.target.dataset.id; e.target.checked ? selected.add(id) : selected.delete(id); updateBar(); };
+$('q').oninput = $('sort').onchange = render;
+$('selVisible').onclick = () => { visible().forEach(f => selected.add(f.id)); render(); };
+$('selNone').onclick = () => { selected.clear(); render(); };
+</script>
+</body>
+</html>
